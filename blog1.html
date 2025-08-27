@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wink321 | Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b',
+                        dark: '#0f172a',
+                        light: '#f8fafc',
+                        accent: '#3b82f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- 主内容 -->
+    <main class="pt-8">
+        <!-- 博客头部 -->
+        <section class="py-9 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto">
+                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                        <span><i class="fa fa-calendar"></i> May 15, 2023</span>
+                        <span><i class="fa fa-clock-o"></i> 8 min read</span>
+                        <span><i class="fa fa-tag"></i> ORB-SLAM3, SLAM, Computer Vision</span>
+                    </div>
+                    <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold text-dark mb-4">Build ORB-SLAM3</h1>
+                    <p class="text-gray-600 text-lg">
+                        Learn how to build ORB-SLAM3 in Ubuntu 20.04 with this comprehensive guide.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 博客文章内容 -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto">
+                    
+                    <div class="prose prose-lg max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            ORB-SLAM3 is one of the most advanced simultaneous localization and mapping (SLAM) systems available, capable of working with monocular, stereo, and RGB-D cameras. This guide will walk you through the complete process of setting up your environment to build ORB-SLAM3 on Ubuntu 20.04.
+                        </p>
+                        
+                        <h2 class="text-2xl font-bold text-dark mt-10 mb-4">Environment Preparation</h2>
+                        
+                        <p class="text-gray-700 mb-6">
+                            Before building ORB-SLAM3 on Ubuntu 20.04, we need to install several dependencies and tools. Follow these steps carefully to set up your environment properly.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-dark mt-8 mb-4">1. Basic Dependencies</h3>
+                        
+                        <p class="text-gray-700 mb-4">
+                            First, update your system and install basic development tools:
+                        </p>
+                        
+                        <pre><code># Update system packages
+sudo apt update
+
+# Install basic development tools
+sudo apt install git cmake gcc g++ mlocate
+
+# Install other necessary dependencies
+sudo apt-get install -y libssl-dev libusb-1.0-0-dev libsuitesparse-dev libboost-bridge-dev</code></pre>
+                        
+                        <h3 class="text-xl font-semibold text-dark mt-8 mb-4">2. Eigen3 Linear Algebra Library</h3>
+                        
+                        <p class="text-gray-700 mb-4">
+                            ORB-SLAM3 requires Eigen3 for mathematical calculations. We recommend installing version 3.3.4:
+                        </p>
+                        
+                        <pre><code># Method 1: Install via package manager
+sudo apt-get install libeigen3-dev
+
+# Method 2: Compile from source (recommended to avoid dependency issues)
+git clone -b 3.3.4 https://github.com/eigenteam/eigen-git-mirror.git
+cd eigen-git-mirror
+mkdir build && cd build
+cmake ..
+sudo make install</code></pre>
+                        
+                        <h3 class="text-xl font-semibold text-dark mt-8 mb-4">3. Pangolin Visualization Library</h3>
+                        
+                        <p class="text-gray-700 mb-4">
+                            ORB-SLAM3 uses Pangolin 0.6 for visualization purposes:
+                        </p>
+                        
+                        <pre><code>git clone -b v0.6 https://github.com/stevenlovegrove/Pangolin.git
+cd Pangolin
+mkdir build && cd build
+cmake ..
+make -j4
+sudo make install
+
+# Verify installation
+sudo apt-get install libgl1-mesa-glx
+cd ../examples/HelloPangolin
+mkdir build && cd build
+cmake ..
+make
+./HelloPangolin  # A RGB cube should appear if successful</code></pre>
+                        
+                        <h3 class="text-xl font-semibold text-dark mt-8 mb-4">4. OpenCV Computer Vision Library</h3>
+                        
+                        <p class="text-gray-700 mb-4">
+                            ORB-SLAM3 supports either OpenCV 3.x or 4.x. Here's how to install OpenCV 4.4.0:
+                        </p>
+                        
+                        <pre><code># Download OpenCV 4.4.0 and opencv_contrib
+wget -O opencv-4.4.0.zip https://github.com/opencv/opencv/archive/4.4.0.zip
+wget -O opencv_contrib-4.4.0.zip https://github.com/opencv/opencv_contrib/archive/4.4.0.zip
+unzip opencv-4.4.0.zip
+unzip opencv_contrib-4.4.0.zip
+
+# Install required dependencies
+sudo apt-get install -y build-essential libgtk2.0-dev pkg-config libswscale-dev libavcodec-dev libavformat-dev libjpeg-dev libpng-dev libtiff-dev
+
+# Compile and install
+cd opencv-4.4.0
+mkdir build && cd build
+cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.4.0/modules ..
+make -j4
+sudo make install</code></pre>
+                        
+                        <h3 class="text-xl font-semibold text-dark mt-8 mb-4">5. ROS Environment (Optional)</h3>
+                        
+                        <p class="text-gray-700 mb-4">
+                            If you want to use ORB-SLAM3 with ROS Noetic, install these additional packages:
+                        </p>
+                        
+                        <pre><code>sudo apt-get install ros-noetic-image-transport
+# Note: If using OpenCV 3.x, you may need to recompile ROS cv_bridge package to match versions</code></pre>
+                    </div>
+                </section>
+            </main>
+
+            <!-- 文章标签 -->
+            <div class="mt-12 pt-8 border-t border-gray-200">
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">ORB-SLAM3</span>
+                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">SLAM</span>
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Computer Vision</span>
+                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Ubuntu</span>
+                    <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Robotics</span>
+                </div>
+            </div>
+    <!-- 作者信息 -->
+    <div class="mt-10 p-6 bg-gray-50 rounded-xl">
+        <div class="flex items-center gap-4">
+            <img src="https://picsum.photos/seed/author/100/100" alt="Author" class="w-16 h-16 rounded-full object-cover">
+            <div>
+                <h3 class="font-bold text-lg">Alex Johnson</h3>
+                <p class="text-gray-500 text-sm mt-1">Robotics researcher and SLAM expert with experience in computer vision and autonomous systems.</p>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-gray-400 py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-white">
+                        <i class="fa fa-code-fork"></i>
+                        <span>DevBlog</span>
+                    </a>
+                    <p class="mt-2 text-sm">Sharing knowledge through code and words.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-6 md:gap-10">
+                    <a href="index.html#home" class="hover:text-white transition-custom">Home</a>
+                    <a href="index.html#about" class="hover:text-white transition-custom">About</a>
+                    <a href="index.html#projects" class="hover:text-white transition-custom">Projects</a>
+                    <a href="index.html#blog" class="hover:text-white transition-custom">Blog</a>
+                    <a href="index.html#contact" class="hover:text-white transition-custom">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">© 2023 DevBlog. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-500 hover:text-white transition-custom">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-custom">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-custom">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-custom">
+                        <i class="fa fa-dev"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 回到顶部按钮
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

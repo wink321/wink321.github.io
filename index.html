@@ -45,46 +45,43 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
     <!-- 导航栏 -->
-    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-sm">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 text-xl font-bold text-primary">
-                <i class="fa fa-code-fork"></i>
-                <span>DevBlog</span>
-            </a>
-            
-            <!-- 桌面导航 -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="#home" class="font-medium hover:text-primary transition-custom">Home</a>
-                <a href="#about" class="font-medium hover:text-primary transition-custom">About</a>
-                <a href="#projects" class="font-medium hover:text-primary transition-custom">Projects</a>
-                <a href="#blog" class="font-medium hover:text-primary transition-custom">Blog</a>
-                <a href="#contact" class="font-medium hover:text-primary transition-custom">Contact</a>
-                <a href="https://github.com" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom">
-                    <i class="fa fa-github mr-2"></i>GitHub
+    <nav id="navbar" class="fixed w-full bg-white/90 backdrop-blur-sm z-50 py-4 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="flex items-center gap-2 text-xl font-bold text-dark">
+                    <i class="fa fa-code-fork"></i>
+                    <span class="nav-title">DevBlog</span>
                 </a>
-            </nav>
-            
-            <!-- 移动端菜单按钮 -->
-            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
-                <i class="fa fa-bars text-2xl"></i>
-            </button>
-        </div>
-        
-        <!-- 移动端导航菜单 -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="container mx-auto px-4 py-3 flex flex-col gap-3">
-                <a href="#home" class="py-2 font-medium hover:text-primary transition-custom">Home</a>
-                <a href="#about" class="py-2 font-medium hover:text-primary transition-custom">About</a>
-                <a href="#projects" class="py-2 font-medium hover:text-primary transition-custom">Projects</a>
-                <a href="#blog" class="py-2 font-medium hover:text-primary transition-custom">Blog</a>
-                <a href="#contact" class="py-2 font-medium hover:text-primary transition-custom">Contact</a>
-                <a href="https://github.com" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom text-center">
-                    <i class="fa fa-github mr-2"></i>GitHub
-                </a>
+                
+                <!-- 语言切换器 -->
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <select id="language-switcher" class="bg-gray-100 text-gray-800 px-3 py-1 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="en">English</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 移动端菜单按钮 -->
+                    <button id="menu-toggle" class="md:hidden text-dark">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </header>
-
+    </nav>
+    
+    <!-- 移动端菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white py-4">
+        <div class="container mx-auto px-4">
+            <a href="#home" class="block py-2 text-gray-800 hover:text-primary mobile-home">Home</a>
+            <a href="#about" class="block py-2 text-gray-800 hover:text-primary mobile-about">About</a>
+            <a href="#projects" class="block py-2 text-gray-800 hover:text-primary mobile-projects">Projects</a>
+            <a href="#blog" class="block py-2 text-gray-800 hover:text-primary mobile-blog">Blog</a>
+            <a href="#contact" class="block py-2 text-gray-800 hover:text-primary mobile-contact">Contact</a>
+        </div>
+    </div>
+    
     <!-- 主内容 -->
     <main>
         <!-- 英雄区域 -->
@@ -93,20 +90,20 @@
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="md:w-1/2 space-y-6">
                         <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-dark">
-                            Hello, I'm <span class="text-primary">Alex</span>
+                            <span class="hello-text">Hello, I'm</span> <span class="text-primary hero-name">Alex</span>
                         </h1>
-                        <h2 class="text-[clamp(1.2rem,3vw,1.8rem)] text-gray-600 font-medium">
+                        <h2 class="text-[clamp(1.2rem,3vw,1.8rem)] text-gray-600 font-medium job-title">
                             Software Engineer & Tech Writer
                         </h2>
-                        <p class="text-lg text-gray-700 max-w-lg">
+                        <p class="text-lg text-gray-700 max-w-lg hero-description">
                             Exploring the world of programming, sharing knowledge through code and words. 
                             Welcome to my personal corner on the web.
                         </p>
                         <div class="flex flex-wrap gap-4 pt-4">
-                            <a href="#blog" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-custom">
+                            <a href="#blog" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-custom read-blog">
                                 Read Blog
                             </a>
-                            <a href="#projects" class="bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 px-6 py-3 rounded-lg font-medium transition-custom">
+                            <a href="#projects" class="bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 px-6 py-3 rounded-lg font-medium transition-custom view-projects">
                                 View Projects
                             </a>
                         </div>
@@ -114,28 +111,9 @@
                     <div class="md:w-1/2 flex justify-center">
                         <div class="relative">
                             <div class="absolute -inset-4 bg-primary/20 rounded-full blur-2xl"></div>
-                            <img src="https://picsum.photos/seed/devprofile/400/400" alt="Developer Profile" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-xl">
+                            <img src="graph/head.jpg" alt="Developer Profile" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-xl">
                         </div>
                     </div>
-                </div>
-                
-                <!-- 社交链接 -->
-                <div class="flex justify-center gap-6 mt-16">
-                    <a href="#" class="text-gray-600 hover:text-primary text-2xl transition-custom">
-                        <i class="fa fa-github"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-primary text-2xl transition-custom">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-primary text-2xl transition-custom">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-primary text-2xl transition-custom">
-                        <i class="fa fa-dev"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-primary text-2xl transition-custom">
-                        <i class="fa fa-stack-overflow"></i>
-                    </a>
                 </div>
             </div>
         </section>
@@ -144,18 +122,18 @@
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">About Me</h2>
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4 about-title">About Me</h2>
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
                 </div>
                 
                 <div class="max-w-3xl mx-auto">
-                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed about-description">
                         I'm a robot algorithm engineer with a passion for building robust algorithm, simulation and sharing my knowledge with the developer community. 
                     </p>
                     
                     <!-- 技能 -->
                     <div class="bg-gray-50 p-6 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-4">Tech Stack</h3>
+                        <h3 class="text-xl font-semibold mb-4 tech-stack">Tech Stack</h3>
                         <div class="flex flex-wrap gap-3">
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">C++</span>
                             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Python</span>
@@ -174,9 +152,9 @@
         <section id="projects" class="py-20 bg-gray-50">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">Featured Projects</h2>
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4 projects-title">Featured Projects</h2>
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-                    <p class="text-gray-600 max-w-2xl mx-auto">
+                    <p class="text-gray-600 max-w-2xl mx-auto projects-description">
                         Check out some of my recent projects. All of them are open-source and available on GitHub.
                     </p>
                 </div>
@@ -191,14 +169,14 @@
                             </div>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Build ORB-SLAM3</h3>
-                            <p class="text-gray-600 mb-4">Learn how to build ORB-SLAM3 in Ubuntu 20.04 with this comprehensive guide.</p>
+                            <h3 class="text-xl font-bold mb-2 project1-title">Build ORB-SLAM3</h3>
+                            <p class="text-gray-600 mb-4 project1-description">Learn how to build ORB-SLAM3 in Ubuntu 20.04 with this comprehensive guide.</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex gap-2">
                                     <span class="text-gray-400 text-sm"><i class="fa fa-star"></i> 4.8</span>
                                     <span class="text-gray-400 text-sm"><i class="fa fa-code-fork"></i> 124</span>
                                 </div>
-                                <a href="blog1.html" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom">
+                                <a href="blog1.html" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom project1-link">
                                     View Project <i class="fa fa-arrow-right"></i>
                                 </a>
                             </div>
@@ -253,7 +231,7 @@
                 </div>
                 
                 <div class="text-center mt-12">
-                    <a href="https://github.com/wink321" target="_blank" class="inline-flex items-center gap-2 bg-dark hover:bg-dark/90 text-white px-6 py-3 rounded-lg font-medium transition-custom">
+                    <a href="https://github.com/wink321" target="_blank" class="inline-flex items-center gap-2 bg-dark hover:bg-dark/90 text-white px-6 py-3 rounded-lg font-medium transition-custom view-all-projects">
                         <i class="fa fa-github"></i> View All Projects
                     </a>
                 </div>
@@ -264,9 +242,9 @@
         <section id="blog" class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">Latest Blog Posts</h2>
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4 blog-title">Latest Blog Posts</h2>
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-                    <p class="text-gray-600 max-w-2xl mx-auto">
+                    <p class="text-gray-600 max-w-2xl mx-auto blog-description">
                         Thoughts, tutorials, and insights about programming and software development.
                     </p>
                 </div>
@@ -279,14 +257,14 @@
                         </div>
                         <div class="p-6">
                             <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                                <span><i class="fa fa-calendar"></i> May 15, 2023</span>
-                                <span><i class="fa fa-clock-o"></i> 8 min read</span>
+                                <span><i class="fa fa-calendar"></i> <span class="blog1-date">May 15, 2023</span></span>
+                                <span><i class="fa fa-clock-o"></i> <span class="blog1-read-time">8 min read</span></span>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Building Responsive UIs with Tailwind CSS</h3>
-                            <p class="text-gray-600 mb-4 line-clamp-3">
+                            <h3 class="text-xl font-bold mb-3 blog1-title">Building Responsive UIs with Tailwind CSS</h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3 blog1-description">
                                 Learn how to create beautiful, responsive user interfaces with Tailwind CSS without writing custom CSS.
                             </p>
-                            <a href="blog1.html" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom">
+                            <a href="blog1.html" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom blog1-link">
                                 Read More <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </div>
@@ -299,14 +277,14 @@
                         </div>
                         <div class="p-6">
                             <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                                <span><i class="fa fa-calendar"></i> April 28, 2023</span>
-                                <span><i class="fa fa-clock-o"></i> 12 min read</span>
+                                <span><i class="fa fa-calendar"></i> <span class="blog2-date">April 28, 2023</span></span>
+                                <span><i class="fa fa-clock-o"></i> <span class="blog2-read-time">12 min read</span></span>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Advanced Git Workflows for Teams</h3>
-                            <p class="text-gray-600 mb-4 line-clamp-3">
+                            <h3 class="text-xl font-bold mb-3 blog2-title">Advanced Git Workflows for Teams</h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3 blog2-description">
                                 Master Git workflows that will improve your team's collaboration and streamline your development process.
                             </p>
-                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom">
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom blog2-link">
                                 Read More <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </div>
@@ -319,14 +297,14 @@
                         </div>
                         <div class="p-6">
                             <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                                <span><i class="fa fa-calendar"></i> April 10, 2023</span>
-                                <span><i class="fa fa-clock-o"></i> 10 min read</span>
+                                <span><i class="fa fa-calendar"></i> <span class="blog3-date">April 10, 2023</span></span>
+                                <span><i class="fa fa-clock-o"></i> <span class="blog3-read-time">10 min read</span></span>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Node.js Performance Optimization Tips</h3>
-                            <p class="text-gray-600 mb-4 line-clamp-3">
+                            <h3 class="text-xl font-bold mb-3 blog3-title">Node.js Performance Optimization Tips</h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3 blog3-description">
                                 Optimize your Node.js applications for production with these proven performance improvement techniques.
                             </p>
-                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom">
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-custom blog3-link">
                                 Read More <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </div>
@@ -334,7 +312,7 @@
                 </div>
                 
                 <div class="text-center mt-12">
-                    <a href="#" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-custom">
+                    <a href="#" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-custom view-all-posts">
                         View All Posts <i class="fa fa-arrow-right"></i>
                     </a>
                 </div>
@@ -345,9 +323,9 @@
         <section id="contact" class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">Get In Touch</h2>
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4 contact-title">Get In Touch</h2>
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-                    <p class="text-gray-300 max-w-2xl mx-auto">
+                    <p class="text-gray-300 max-w-2xl mx-auto contact-description">
                         Have a question or want to collaborate? Feel free to reach out to me.
                     </p>
                 </div>
@@ -356,23 +334,23 @@
                     <form class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2 contact-name">Name</label>
                                 <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="Your name">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2 contact-email">Email</label>
                                 <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="Your email">
                             </div>
                         </div>
                         <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                            <label for="subject" class="block text-sm font-medium text-gray-300 mb-2 contact-subject">Subject</label>
                             <input type="text" id="subject" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="Subject">
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2 contact-message">Message</label>
                             <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="Your message"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-custom">
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-custom contact-send">
                             Send Message
                         </button>
                     </form>
@@ -382,21 +360,21 @@
                             <div class="text-primary text-2xl mb-2">
                                 <i class="fa fa-envelope"></i>
                             </div>
-                            <h3 class="font-medium mb-1">Email</h3>
+                            <h3 class="font-medium mb-1 contact-email-title">Email</h3>
                             <p class="text-gray-400">hello@devblog.com</p>
                         </div>
                         <div class="p-4">
                             <div class="text-primary text-2xl mb-2">
                                 <i class="fa fa-map-marker"></i>
                             </div>
-                            <h3 class="font-medium mb-1">Location</h3>
+                            <h3 class="font-medium mb-1 contact-location">Location</h3>
                             <p class="text-gray-400">San Francisco, CA</p>
                         </div>
                         <div class="p-4">
                             <div class="text-primary text-2xl mb-2">
                                 <i class="fa fa-twitter"></i>
                             </div>
-                            <h3 class="font-medium mb-1">Twitter</h3>
+                            <h3 class="font-medium mb-1 contact-twitter">Twitter</h3>
                             <p class="text-gray-400">@devblogger</p>
                         </div>
                     </div>
@@ -412,22 +390,22 @@
                 <div class="mb-6 md:mb-0">
                     <a href="#" class="flex items-center gap-2 text-xl font-bold text-white">
                         <i class="fa fa-code-fork"></i>
-                        <span>DevBlog</span>
+                        <span class="footer-title">DevBlog</span>
                     </a>
-                    <p class="mt-2 text-sm">Sharing knowledge through code and words.</p>
+                    <p class="mt-2 text-sm footer-description">Sharing knowledge through code and words.</p>
                 </div>
                 
                 <div class="flex flex-col md:flex-row gap-6 md:gap-10">
-                    <a href="#home" class="hover:text-white transition-custom">Home</a>
-                    <a href="#about" class="hover:text-white transition-custom">About</a>
-                    <a href="#projects" class="hover:text-white transition-custom">Projects</a>
-                    <a href="#blog" class="hover:text-white transition-custom">Blog</a>
-                    <a href="#contact" class="hover:text-white transition-custom">Contact</a>
+                    <a href="#home" class="hover:text-white transition-custom footer-home">Home</a>
+                    <a href="#about" class="hover:text-white transition-custom footer-about">About</a>
+                    <a href="#projects" class="hover:text-white transition-custom footer-projects">Projects</a>
+                    <a href="#blog" class="hover:text-white transition-custom footer-blog">Blog</a>
+                    <a href="#contact" class="hover:text-white transition-custom footer-contact">Contact</a>
                 </div>
             </div>
             
             <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm">© 2023 DevBlog. All rights reserved.</p>
+                <p class="text-sm footer-copyright">© 2023 DevBlog. All rights reserved.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
                     <a href="#" class="text-gray-500 hover:text-white transition-custom">
                         <i class="fa fa-github"></i>
@@ -453,6 +431,158 @@
 
     <!-- JavaScript -->
     <script>
+        // 添加语言切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 定义翻译内容
+            const translations = {
+                en: {
+                    'nav-title': 'DevBlog',
+                    'mobile-home': 'Home',
+                    'mobile-about': 'About',
+                    'mobile-projects': 'Projects',
+                    'mobile-blog': 'Blog',
+                    'mobile-contact': 'Contact',
+                    'hello-text': 'Hello, I\'m',
+                    'hero-name': 'Alex',
+                    'job-title': 'Software Engineer & Tech Writer',
+                    'hero-description': 'Exploring the world of programming, sharing knowledge through code and words. Welcome to my personal corner on the web.',
+                    'read-blog': 'Read Blog',
+                    'view-projects': 'View Projects',
+                    'about-title': 'About Me',
+                    'about-description': 'I\'m a robot algorithm engineer with a passion for building robust algorithm, simulation and sharing my knowledge with the developer community.',
+                    'tech-stack': 'Tech Stack',
+                    'projects-title': 'Featured Projects',
+                    'projects-description': 'Check out some of my recent projects. All of them are open-source and available on GitHub.',
+                    'project1-title': 'Build ORB-SLAM3',
+                    'project1-description': 'Learn how to build ORB-SLAM3 in Ubuntu 20.04 with this comprehensive guide.',
+                    'project1-link': 'View Project',
+                    'view-all-projects': 'View All Projects',
+                    'blog-title': 'Latest Blog Posts',
+                    'blog-description': 'Thoughts, tutorials, and insights about programming and software development.',
+                    'blog1-date': 'May 15, 2023',
+                    'blog1-read-time': '8 min read',
+                    'blog1-title': 'Building Responsive UIs with Tailwind CSS',
+                    'blog1-description': 'Learn how to create beautiful, responsive user interfaces with Tailwind CSS without writing custom CSS.',
+                    'blog1-link': 'Read More',
+                    'blog2-date': 'April 28, 2023',
+                    'blog2-read-time': '12 min read',
+                    'blog2-title': 'Advanced Git Workflows for Teams',
+                    'blog2-description': 'Master Git workflows that will improve your team\'s collaboration and streamline your development process.',
+                    'blog2-link': 'Read More',
+                    'blog3-date': 'April 10, 2023',
+                    'blog3-read-time': '10 min read',
+                    'blog3-title': 'Node.js Performance Optimization Tips',
+                    'blog3-description': 'Optimize your Node.js applications for production with these proven performance improvement techniques.',
+                    'blog3-link': 'Read More',
+                    'view-all-posts': 'View All Posts',
+                    'contact-title': 'Get In Touch',
+                    'contact-description': 'Have a question or want to collaborate? Feel free to reach out to me.',
+                    'contact-name': 'Name',
+                    'contact-email': 'Email',
+                    'contact-subject': 'Subject',
+                    'contact-message': 'Message',
+                    'contact-send': 'Send Message',
+                    'contact-email-title': 'Email',
+                    'contact-location': 'Location',
+                    'contact-twitter': 'Twitter',
+                    'footer-title': 'DevBlog',
+                    'footer-description': 'Sharing knowledge through code and words.',
+                    'footer-home': 'Home',
+                    'footer-about': 'About',
+                    'footer-projects': 'Projects',
+                    'footer-blog': 'Blog',
+                    'footer-contact': 'Contact',
+                    'footer-copyright': '© 2023 DevBlog. All rights reserved.'
+                },
+                zh: {
+                    'nav-title': '开发者博客',
+                    'mobile-home': '首页',
+                    'mobile-about': '关于我',
+                    'mobile-projects': '项目',
+                    'mobile-blog': '博客',
+                    'mobile-contact': '联系我',
+                    'hello-text': '你好，我是',
+                    'hero-name': 'Alex',
+                    'job-title': '软件工程师 & 技术作者',
+                    'hero-description': '探索编程世界，通过代码和文字分享知识。欢迎来到我的个人网络角落。',
+                    'read-blog': '阅读博客',
+                    'view-projects': '查看项目',
+                    'about-title': '关于我',
+                    'about-description': '我是一名机器人算法工程师，热衷于构建鲁棒的算法、仿真，并与开发者社区分享我的知识。',
+                    'tech-stack': '技术栈',
+                    'projects-title': '精选项目',
+                    'projects-description': '查看我最近的一些项目。它们都是开源的，可以在 GitHub 上找到。',
+                    'project1-title': '构建 ORB-SLAM3',
+                    'project1-description': '通过本综合指南了解如何在 Ubuntu 20.04 中构建 ORB-SLAM3。',
+                    'project1-link': '查看项目',
+                    'view-all-projects': '查看所有项目',
+                    'blog-title': '最新博客文章',
+                    'blog-description': '关于编程和软件开发的想法、教程和见解。',
+                    'blog1-date': '2023年5月15日',
+                    'blog1-read-time': '阅读时长 8 分钟',
+                    'blog1-title': '使用 Tailwind CSS 构建响应式 UI',
+                    'blog1-description': '了解如何使用 Tailwind CSS 创建美观、响应式的用户界面，而无需编写自定义 CSS。',
+                    'blog1-link': '阅读更多',
+                    'blog2-date': '2023年4月28日',
+                    'blog2-read-time': '阅读时长 12 分钟',
+                    'blog2-title': '团队的高级 Git 工作流',
+                    'blog2-description': '掌握能够提高团队协作效率并简化开发流程的 Git 工作流。',
+                    'blog2-link': '阅读更多',
+                    'blog3-date': '2023年4月10日',
+                    'blog3-read-time': '阅读时长 10 分钟',
+                    'blog3-title': 'Node.js 性能优化技巧',
+                    'blog3-description': '使用这些经过验证的性能改进技术优化您的 Node.js 应用程序。',
+                    'blog3-link': '阅读更多',
+                    'view-all-posts': '查看所有文章',
+                    'contact-title': '联系我',
+                    'contact-description': '有问题或想合作吗？随时联系我。',
+                    'contact-name': '姓名',
+                    'contact-email': '邮箱',
+                    'contact-subject': '主题',
+                    'contact-message': '消息',
+                    'contact-send': '发送消息',
+                    'contact-email-title': '邮箱',
+                    'contact-location': '位置',
+                    'contact-twitter': '推特',
+                    'footer-title': '开发者博客',
+                    'footer-description': '通过代码和文字分享知识。',
+                    'footer-home': '首页',
+                    'footer-about': '关于',
+                    'footer-projects': '项目',
+                    'footer-blog': '博客',
+                    'footer-contact': '联系',
+                    'footer-copyright': '© 2023 开发者博客。保留所有权利。'
+                }
+            };
+            
+            const langSwitcher = document.getElementById('language-switcher');
+            
+            // 检查本地存储的语言设置
+            const savedLang = localStorage.getItem('language') || 'en';
+            langSwitcher.value = savedLang;
+            
+            // 应用语言设置
+            applyLanguage(savedLang);
+            
+            // 监听语言切换
+            langSwitcher.addEventListener('change', function() {
+                const selectedLang = this.value;
+                localStorage.setItem('language', selectedLang);
+                applyLanguage(selectedLang);
+            });
+            
+            // 应用语言函数
+            function applyLanguage(lang) {
+                // 翻译所有带 data-i18n 属性的元素
+                Object.keys(translations[lang]).forEach(key => {
+                    const elements = document.querySelectorAll('.' + key);
+                    elements.forEach(element => {
+                        element.textContent = translations[lang][key];
+                    });
+                });
+            }
+        });
+        
         // 导航栏滚动效果
         const navbar = document.getElementById('navbar');
         const backToTop = document.getElementById('back-to-top');
